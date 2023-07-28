@@ -7,6 +7,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+app.use(cors({ origin: process.env.CORS_DOMAIN_ORIGIN }));
 app.use('/api/diaries', diaryRouter);
 
 app.get('/ping', (_req, res) => {
