@@ -1,13 +1,13 @@
 import express from 'express'
 import diaryRouter from './routes/diaries'
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 
-const PORT = 3000;
-
+app.use(cors({ origin: process.env.CORS_DOMAIN_ORIGIN }));
 app.use('/api/diaries', diaryRouter);
 
 app.get('/ping', (_req, res) => {
@@ -21,7 +21,5 @@ app.all('/', (_req, res) => {
     res.send(key)
 })
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-})
+app.listen(process.env.PORT || 3000)
 
