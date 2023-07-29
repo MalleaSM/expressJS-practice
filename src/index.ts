@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.use('/api/diaries', diaryRouter);
 
-app.get('/ping', (_req, res) => {
+app.get('/api/ping', (_req, res) => {
     console.log('ping here');
     res.send('pong');
 })
