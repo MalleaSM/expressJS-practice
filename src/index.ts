@@ -16,7 +16,7 @@ app.get('/api/ping', (_req, res) => {
 
 app.get('/store/:key/:value', (req, res) => {
     const { key, value } = req.params;
-    const localStorage = new LocalStorage.LocalStorage('./scratch');
+    const localStorage = new LocalStorage.LocalStorage('/tmp/scratch');
   
     localStorage.setItem(key, value);
   
@@ -26,7 +26,7 @@ app.get('/store/:key/:value', (req, res) => {
   // Set up a route to retrieve data
   app.get('/retrieve/:key', (req, res) => {
     const { key } = req.params;
-    const localStorage = new LocalStorage.LocalStorage('./scratch');
+    const localStorage = new LocalStorage.LocalStorage('/tmp/scratch');
     const value = localStorage.getItem(key);
   
     if (value) {
